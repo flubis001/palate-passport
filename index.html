@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palate Passport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">Food Discovery</p>
+        <h1>Keep a running list of the places you want to try next.</h1>
+        <p class="hero-copy">
+          Save restaurants, cafes, and bars with quick notes, neighborhood context,
+          and personal tags so your next food pick feels easy.
+        </p>
+      </section>
+
+      <section class="panel panel-form" aria-labelledby="place-form-title">
+        <div>
+          <p class="section-kicker">Add a place</p>
+          <h2 id="place-form-title">Your shortlist</h2>
+        </div>
+
+        <form id="place-form" class="place-form">
+          <input type="hidden" id="place-id" />
+
+          <label>
+            Place name
+            <input id="name" name="name" type="text" maxlength="60" required />
+          </label>
+
+          <div class="field-row">
+            <label>
+              Cuisine
+              <input id="cuisine" name="cuisine" type="text" maxlength="40" required />
+            </label>
+
+            <label>
+              Neighborhood
+              <input id="neighborhood" name="neighborhood" type="text" maxlength="40" required />
+            </label>
+          </div>
+
+          <label>
+            Tags
+            <input
+              id="tags"
+              name="tags"
+              type="text"
+              maxlength="80"
+              placeholder="date night, brunch, cheap eats"
+            />
+          </label>
+
+          <label>
+            Quick note
+            <textarea id="note" name="note" rows="3" maxlength="180"></textarea>
+          </label>
+
+          <label class="checkbox-row">
+            <input id="tried" name="tried" type="checkbox" />
+            Already tried it
+          </label>
+
+          <div class="button-row">
+            <button type="submit" id="submit-button">Save place</button>
+            <button type="button" id="cancel-button" class="ghost hidden">Cancel edit</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel panel-list" aria-labelledby="places-title">
+        <div class="list-header">
+          <div>
+            <p class="section-kicker">Browse</p>
+            <h2 id="places-title">Saved places</h2>
+          </div>
+          <p id="results-count" class="results-count"></p>
+        </div>
+
+        <div class="filters" aria-label="Place filters">
+          <input id="search" type="search" placeholder="Search places or notes" />
+          <select id="cuisine-filter">
+            <option value="all">All cuisines</option>
+          </select>
+          <select id="neighborhood-filter">
+            <option value="all">All neighborhoods</option>
+          </select>
+          <select id="status-filter">
+            <option value="all">All statuses</option>
+            <option value="want-to-try">Want to try</option>
+            <option value="tried">Tried</option>
+          </select>
+        </div>
+
+        <div id="empty-state" class="empty-state hidden">
+          Add your first place to start building a personal food map.
+        </div>
+
+        <ul id="places-list" class="places-list"></ul>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
